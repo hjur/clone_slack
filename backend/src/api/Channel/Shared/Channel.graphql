@@ -1,7 +1,7 @@
     type Channel{
     id: Int!
     channelName : String!
-    messages: [Messsge]
+    messages: [Message]
     createAt:String!
     updateAt :String!
     }
