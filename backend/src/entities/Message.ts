@@ -11,7 +11,10 @@ class Message extends BaseEntity{
     nickname:string;
 
     @Column({type:"text", nullable:false})
-    contants:string;
+    contents:string;
+
+    @Column({type:"text", nullable:false})
+    thumbnail:string;
     
     @ManyToOne(
         type => Channel,
