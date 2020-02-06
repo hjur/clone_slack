@@ -1,8 +1,9 @@
-import { GraphQLServer } from "graphql-yoga";
+import { GraphQLServer, PubSub } from "graphql-yoga";
 import connection from "./ormConfig";
 import schema from "./schema";
 
-const server = new GraphQLServer({schema});
+const pubsub = new PubSub();
+const server = new GraphQLServer({schema, context:{pubsub}});
 
 connection.then(() => 
     server.start(() =>
