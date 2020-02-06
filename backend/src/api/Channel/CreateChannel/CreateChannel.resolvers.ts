@@ -4,13 +4,13 @@ import Channel from "../../../../src/entities/Channel";
 
 const resolvers:Resolvers ={
     Mutation:{
-        CreateChannel: async(_, args: CreateChannelMutationArgs,{PubSub}):Promise<CreateChannelResponse> => {
+        CreateChannel: async(_, args: CreateChannelMutationArgs,{pubSub}):Promise<CreateChannelResponse> => {
 
             try{
                 const {channelName} = args;
                 const isExistChannel = await Channel.findOne({channelName});
 
-                if(!isExistChannel){
+                if(isExistChannel){
                     return {
                         ok: false,
                         error:"already channel"
@@ -19,7 +19,7 @@ const resolvers:Resolvers ={
 
                 const newChannel = await Channel.create({channelName}).save();
 
-                PubSub.publish("newchannel",{
+                pubSub.publish("newChannel",{
                     CreateChannelSubscription: newChannel
                 });
 

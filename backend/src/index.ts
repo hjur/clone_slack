@@ -2,8 +2,12 @@ import { GraphQLServer, PubSub } from "graphql-yoga";
 import connection from "./ormConfig";
 import schema from "./schema";
 
-const pubsub = new PubSub();
-const server = new GraphQLServer({schema, context:{pubsub}});
+//웹소켓
+//subscription
+const pubSub = new PubSub();
+//그래프큐엘서 안에 웹소켓 넣어ㅓㅓㅓㅓㅓㅓㅓㅓㅓㅓㅓㅓㅓㅓ
+// mutation, query 
+const server = new GraphQLServer({schema, context:{pubSub}});
 
 connection.then(() => 
     server.start(() =>
