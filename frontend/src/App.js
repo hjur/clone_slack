@@ -1,13 +1,18 @@
 import React from 'react';
-import Counter from './Counter'
-
+import styled from 'styled-components';
+import ChannelList from './Components/ChannelList';
 function App() {
   return (
-    <div>
-      얍
-      <Counter></Counter>
-    </div>
+    <MainFrame>
+      <ChannelList></ChannelList>
+    </MainFrame>
   );
 }
+
+const MainFrame = styled.div`
+display: flex;
+height: 100%;
+flex-direction: row;
+`;
 
 export default App;
